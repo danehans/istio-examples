@@ -116,7 +116,7 @@ Navigate to the Kiali Workloads pane. Make sure "default" and "istio-system" nam
 The padlock icons on the traffic flows indicate that the connections are secure.
 __Note:__ You may need to regenerate traffic if the graph is empty.
 
-![Screenshot](./images/kiali.png)
+![Screenshot](./docs/images/kiali.png)
 
 ## Cleanup
 
