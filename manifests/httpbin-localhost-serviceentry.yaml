@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: httpbin
+  namespace: default
+spec:
+  hosts:
+  - httpbin.localhost
+  location: MESH_INTERNAL
+  ports:
+  - name: web
+    number: 80
+    protocol: HTTP
+  resolution: DNS
+  workloadSelector:
+    labels:
+      app: httpbin

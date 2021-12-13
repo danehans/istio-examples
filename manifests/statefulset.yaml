@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: httpbin
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpbin
+  labels:
+    app: httpbin
+    service: httpbin
+spec:
+  ports:
+  - name: http
+    port: 80
+  clusterIP: None
+  selector:
+    app: httpbin
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: httpbin
+spec:
+  selector:
+    matchLabels:
+      app: httpbin # has to match .spec.template.metadata.labels
+      version: v1
+  serviceName: "httpbin"
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: httpbin # has to match .spec.selector.matchLabels
+        version: v1
+    spec:
+      serviceAccountName: httpbin
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: httpbin
+        image: docker.io/kennethreitz/httpbin
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+          name: web
