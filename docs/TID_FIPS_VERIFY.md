@@ -111,34 +111,6 @@ $ kubectl exec -ti testssl -- testssl.sh https://httpbin.default.svc.cluster.loc
  (built: "Jan 18 17:12:17 2019", platform: "linux-x86_64")
 
 
- Start 2022-01-12 17:02:20        -->> 10.96.79.160:80 (httpbin.default.svc.cluster.local.) <<--
-
- rDNS (10.96.79.160):    httpbin.default.svc.cluster.local.
-^C
-~$ kubectl exec -ti testssl -- testssl.sh https://httpbin.default.svc.cluster.local.:80/headers
-~$ kubectl get svc
-NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
-httpbin      ClusterIP   10.96.79.160   <none>        8000/TCP   9m13s
-kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP    40h
-sleep        ClusterIP   10.96.19.80    <none>        80/TCP     9m14s
-~$ kubectl exec -ti testssl -- testssl.sh https://httpbin.default.svc.cluster.local.:8000/headers
-
-###########################################################
-    testssl.sh       3.1dev from https://testssl.sh/dev/
-
-      This program is free software. Distribution and
-             modification under GPLv2 permitted.
-      USAGE w/o ANY WARRANTY. USE IT AT YOUR OWN RISK!
-
-       Please file bugs @ https://testssl.sh/bugs/
-
-###########################################################
-
- Using "OpenSSL 1.0.2-chacha (1.0.2k-dev)" [~183 ciphers]
- on testssl:/home/testssl/bin/openssl.Linux.x86_64
- (built: "Jan 18 17:12:17 2019", platform: "linux-x86_64")
-
-
  Start 2022-01-12 17:06:50        -->> 10.96.79.160:8000 (httpbin.default.svc.cluster.local.) <<--
 
  rDNS (10.96.79.160):    httpbin.default.svc.cluster.local.
